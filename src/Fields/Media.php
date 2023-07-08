@@ -212,7 +212,7 @@ class Media extends Field
         $mediaClass::setNewOrder($ids);
     }
 
-    private function addNewMedia(NovaRequest $request, $data, HasMedia $model, string $collection): Collection
+    private function addNewMedia(NovaRequest $request, $data, $model, string $collection): Collection
     {
 
         return collect($data)
@@ -321,7 +321,7 @@ class Media extends Field
     /**
      * @param HasMedia|HasMediaTrait $resource
      */
-    protected function checkCollectionIsMultiple(HasMedia $resource, string $collectionName)
+    protected function checkCollectionIsMultiple($resource, string $collectionName)
     {
         $resource->registerMediaCollections();
         $isSingle = collect($resource->mediaCollections)
@@ -382,7 +382,7 @@ class Media extends Field
      * This method will use addMediaFromUrl(), passing it the
      * temporary location of the file.
      */
-    private function makeMediaFromVaporUpload(array $file, HasMedia $model): FileAdder
+    private function makeMediaFromVaporUpload(array $file, $model): FileAdder
     {
         $disk = config('filesystems.default');
 
